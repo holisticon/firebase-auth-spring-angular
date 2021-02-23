@@ -1,4 +1,5 @@
-<div *ngIf="auth.user | async as user">
-  <h1>Hello {{ user.displayName }}!</h1>
+<div *ngIf="profileData$ | async as user">
+  <h1>Hello {{ user.nickname }}!</h1>
+
   <button (click)="logout()">Logout</button>
 </div>

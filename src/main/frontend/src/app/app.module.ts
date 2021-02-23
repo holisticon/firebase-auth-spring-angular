@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,17 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FormsModule
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: IdTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
