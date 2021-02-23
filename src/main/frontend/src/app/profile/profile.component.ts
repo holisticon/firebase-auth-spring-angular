@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 interface ProfileData {
   nickname: string;
 }
@@ -16,12 +16,12 @@ export class ProfileComponent {
 
   profileData$: Observable<ProfileData>;
 
-  constructor(public auth: AngularFireAuth, private router: Router) {
+  constructor(public auth: AngularFireAuth, private router: Router, private http: HttpClient) {
     this.profileData$ = this.retrieveProfileData();
   }
 
   private retrieveProfileData(): Observable<ProfileData> {
-    return of({nickname: 'Langweilig'});
+    return this.http.get<ProfileData>('/api/profile');
   }
 
   logout() {
