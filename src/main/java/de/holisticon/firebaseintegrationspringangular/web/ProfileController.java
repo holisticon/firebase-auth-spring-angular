@@ -1,5 +1,8 @@
 package de.holisticon.firebaseintegrationspringangular.web;
 
+import de.holisticon.firebaseintegrationspringangular.dto.ProfileDataDto;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileController {
     @GetMapping(value = "profile")
     public ProfileDataDto getProfile() {
-        return new ProfileDataDto("Fetzig!");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String uid = authentication.getName();
+
+        return new ProfileDataDto(uid, "Fetzig!");
     }
 }

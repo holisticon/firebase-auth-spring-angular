@@ -1,0 +1,3 @@
+spring.security.oauth2.resourceserver.jwt:
+    issuer-uri: https://securetoken.google.com/ranked-ba0d2
+    jwk-set-uri: https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com

@@ -12,7 +12,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/api/**")
+                .authenticated()
                 .anyRequest()
-                .permitAll();
+                .permitAll()
+                .and()
+                .oauth2ResourceServer()
+                .jwt();
     }
 }
