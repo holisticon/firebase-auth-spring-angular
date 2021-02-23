@@ -1,0 +1,11 @@
+<div class="login-container">
+  <h1>Login</h1>
+  <h2>With E-Mail</h2>
+  <input [(ngModel)]="email" placeholder="E-mail address">
+  <input [(ngModel)]="password" placeholder="Password" type="password">
+  <button (click)="loginWithEmail()">Login</button>
+  <a routerLink="/register">Register instead.</a>
+
+  <h2>With social</h2>
+  <button (click)="loginWithGoogle()">Login with Google</button>
+</div>
