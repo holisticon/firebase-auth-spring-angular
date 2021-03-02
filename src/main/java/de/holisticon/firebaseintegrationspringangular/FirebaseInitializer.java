@@ -28,7 +28,7 @@ public class FirebaseInitializer {
 
     private void initializeFirebaseApp() throws IOException {
         if (FirebaseApp.getApps() == null || FirebaseApp.getApps().isEmpty()) {
-            InputStream serviceAccount = getClass().getClassLoader().getResourceAsStream("static/firebase-credentials.json");
+            InputStream serviceAccount = getClass().getClassLoader().getResourceAsStream("firebase-credentials.json");
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .build();
