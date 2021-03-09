@@ -1,5 +1,10 @@
 <div *ngIf="profileData$ | async as user">
   <h1>Hello {{ user.nickname }}!</h1>
 
+  <h2>Your current Elo is {{ user.elo }}</h2>
+  <p>
+    <button (click)="addElo()">More Elo pls</button>
+  </p>
+
   <button (click)="logout()">Logout</button>
 </div>

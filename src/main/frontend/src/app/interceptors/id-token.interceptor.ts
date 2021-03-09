@@ -18,7 +18,6 @@ export class IdTokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.token$.pipe(take(1), flatMap((token) => {
-      console.log('intercepting stuff with token: ' + token);
       let newReq = req;
       if (token) {
         newReq = req.clone({

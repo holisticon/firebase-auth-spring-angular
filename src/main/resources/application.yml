@@ -1,3 +1,10 @@
-spring.security.oauth2.resourceserver.jwt:
-    issuer-uri: https://securetoken.google.com/ranked-ba0d2
-    jwk-set-uri: https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com
+spring:
+    security.oauth2.resourceserver.jwt:
+        issuer-uri: https://securetoken.google.com/ranked-ba0d2
+        jwk-set-uri: https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com
+    datasource:
+        url: jdbc:h2:mem:AZ;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        username: sa
+        password:
+        driver-class-name: org.h2.Driver
+    jpa.database-platform: org.hibernate.dialect.H2Dialect
